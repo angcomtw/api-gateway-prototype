@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <title>MLaas HomePage</title>
+</head>
+<body>
+    Please key in your id number:
+    <form action="/testmodel/v1.0/loan" target='_self' method="post">
+    <input type="text" id="id">
+    <input type="button" id="sendout" value="Submit"><br>
+
+        <td height="16" ><label id="output" /></td>
+    </form>
+    <script src="https://cdn.bootcss.com/jquery/1.10.2/jquery.min.js">
+        </script>
+    <script>
+    $("#sendout").click(function() {
+                        var id = $("#id").val();
+
+
+                        $.ajax({
+                              type :"POST",
+                              url  : "http://127.0.0.1:5001/testmodel/v1.0/loan",
+                              data : {
+                              id : $("#id").val()
+                              },
+                              dataType: "text",
+                              success : function(happy) {
+                              $("#output").html(happy);
+                              }
+                              })
+                          });
+     </script>
+</body>
+</html>
