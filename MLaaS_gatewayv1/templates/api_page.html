@@ -1,0 +1,37 @@
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}Gateway Page-1{% endblock %}
+
+
+{% block navbar %}
+<div class="navbar navbar-inverse" role="navigation">
+    <div class="container">
+	<div class="navbar-header">
+	    <a class="navbar-brand" href='/'>Gateway HomPage</a>
+	</div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="page-header">
+	<h1>Please key in your ID number:<br></h1>
+    </div>
+    
+    <form id='queryform', method="post">
+	{{ form.hidden_tag() }}
+	{{ form.query_string_label }} {{ form.query_string }}
+	{{ form.submit()}}
+    </form><br>
+    {% if query_string %}{{ query_string }}{% endif %}
+    {% if dt %}{{ dt }}{% endif %}
+    {% if predict_value %}{{ predict_value }}{% endif %}
+
+
+</div>
+
+
+
+{% endblock %}
